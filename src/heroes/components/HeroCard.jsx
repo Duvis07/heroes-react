@@ -15,7 +15,7 @@ export const HeroCard = ({
   first_appearance,
   characters,
 }) => {
-  const heroImageUrl = `./assets/heroes/${id}.jpg`;
+  const heroImageUrl = require(`/assets/heroes/${id}.jpg`);
 
   /* const charactersByHero = <p className="card-text">{characters}</p>; */
 
