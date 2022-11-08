@@ -20,38 +20,33 @@ describe("Puebas en el publicRoute", () => {
     expect(screen.getByText("Ruta Publica")).toBeTruthy();
   });
 
-  test('debe de navegar si está autenticado', () => { 
-
-        
+  test("debe de navegar si está autenticado", () => {
     const contextValue = {
-        logged: true,
-        user: {
-            name: 'Strider',
-            id: 'ABC123'
-        }
-    }
+      logged: true,
+      user: {
+        name: "Strider",
+        id: "ABC123",
+      },
+    };
 
     render(
-        <AuthContext.Provider value={ contextValue }>
-            <MemoryRouter initialEntries={['/login']}>
-
-                <Routes>
-                    <Route path='login' element={
-                        <PublicRoute>
-                            <h1>Ruta pública</h1>
-                        </PublicRoute>
-                    } />
-                    <Route path='marvel' element={ <h1>Página Marvel</h1> } />
-                </Routes>
-
-                
-            </MemoryRouter>
-        </AuthContext.Provider>
+      <AuthContext.Provider value={contextValue}>
+        <MemoryRouter initialEntries={["/login"]}>
+          <Routes>
+            <Route
+              path="login"
+              element={
+                <PublicRoute>
+                  <h1>Ruta pública</h1>
+                </PublicRoute>
+              }
+            />
+            <Route path="marvel" element={<h1>Página Marvel</h1>} />
+          </Routes>
+        </MemoryRouter>
+      </AuthContext.Provider>
     );
 
-    expect( screen.getByText('Página Marvel') ).toBeTruthy();
-
-
-})
-
+    expect(screen.getByText("Página Marvel")).toBeTruthy();
+  });
 });
