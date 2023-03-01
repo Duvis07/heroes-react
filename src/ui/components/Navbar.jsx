@@ -10,6 +10,7 @@ export const Navbar = () => {
 
   // wl replace: true, evita que el usuario pueda volver a la pagina anterior
   const onLogout = () => {
+    //el logout se encuentra en el AuthContext  y se usa el dispatch para poder hacer el logout
     logout();
     navigate("/login", { replace: true });
 

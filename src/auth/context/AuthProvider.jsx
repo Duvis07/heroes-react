@@ -16,9 +16,11 @@ const init = () => {
   };
 };
 
+//recibe todos los componentes hijos
 export const AuthProvider = ({ children }) => {
   const [authState, dispatch] = useReducer(authReducer, {}, init);
 
+  //se crea una funcion para poder hacer el login recibiendo el nombre del usuario
   const login = (name = "") => {
     const user = { id: "1223", name };
 
@@ -26,9 +28,14 @@ export const AuthProvider = ({ children }) => {
 
     localStorage.setItem("user", JSON.stringify(user));
 
+    //se dispara la accion y se le pasa el action que es el objeto que se creo arriba
+    //llamado user
     dispatch(action);
   };
 
+  ///se crea una funcion para poder hacer el logout
+  //se elimina el user del localStorage
+  //se crea un action que es un objeto que tiene el type y el payload
   const logout = () => {
     localStorage.removeItem("user");
     const action = { type: types.logout };
@@ -39,6 +46,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         ...authState,
+        //METODOS
         login,
         logout,
       }}
