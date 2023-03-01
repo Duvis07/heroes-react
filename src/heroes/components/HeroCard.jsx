@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// se crea un componente para que se muestre el nombre de los heroes que tienen alter ego diferente a su nombre
+//si el alter ego es igual al nombre de los heroes no se muestra el nombre de los heroes
 export const CharactersByHero = ({ alter_ego, characters }) => {
   if (alter_ego === characters) return <></>;
 
   return <p className="card-text">{characters}</p>;
 };
 
+// se trae el id, superhero, publisher, alter_ego, first_appearance, characters de la data
 export const HeroCard = ({
   id,
   superhero,
@@ -15,6 +18,7 @@ export const HeroCard = ({
   first_appearance,
   characters,
 }) => {
+  // se crea una constante para que se pueda usar la imagen de cada heroe
   const heroImageUrl = require(`/assets/heroes/${id}.jpg`);
 
   /* const charactersByHero = <p className="card-text">{characters}</p>; */

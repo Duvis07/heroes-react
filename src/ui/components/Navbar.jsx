@@ -5,8 +5,10 @@ import { AuthContext } from "../../auth/context";
 export const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
+  //ES UN CUSTOM HOOK DE REACT ROUTER DOM PARA AYUDAR A NAVEGAR
   const navigate = useNavigate();
 
+  // wl replace: true, evita que el usuario pueda volver a la pagina anterior
   const onLogout = () => {
     logout();
     navigate("/login", { replace: true });

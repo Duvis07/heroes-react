@@ -6,22 +6,28 @@ import { getHeroByName } from "../helpers";
 
 export const SearchPage = () => {
   const navigate = useNavigate();
+  //se usa el hook useLocation para obtener la url
   const location = useLocation();
 
+  //Se instala QueryString para poder obtener los query params
+  //se utiliza para obtener el query param q y se manda la propiedad de location.search
   const { q = "" } = queryString.parse(location.search);
+  // se llama la funcion getHeroByName y se le pasa el query param q
   const heroes = getHeroByName(q);
 
-  const showSearch = q.length === 0;
-  const showError = q.length > 0 && heroes.length === 0;
+  const showSearch = (q.length === 0);
+  const showError =( q.length > 0) && heroes.length === 0;
 
   const { searchText, onInputChange } = useForm({
     searchText: q,
   });
 
+  //recibe el event borra espacios en blanco y si es menor a 1 no hace nada
   const onSearchSubmit = (event) => {
     event.preventDefault();
     // if ( searchText.trim().length <= 1 ) return;
 
+    //le envia query param con lo que la persona escribio en el searchText
     navigate(`?q=${searchText}`);
   };
 
@@ -60,20 +66,15 @@ export const SearchPage = () => {
                   && <div className="alert alert-danger">No hero with <b>{ q }</b></div>
             } */}
 
-          <div
-            className="alert alert-primary animate__animated animate__fadeIn"
-            style={{ display: showSearch ? "" : "none" }}
-          >
-            Search a hero
-          </div>
+<div className="alert alert-primary animate__animated animate__fadeIn" 
+                style={{ display: showSearch ? '' : 'none' }}>
+              Search a hero
+            </div>
 
-          <div
-            className="alert alert-danger animate__animated animate__fadeIn"
-            style={{ display: showError ? "" : "none" }}
-          >
-            No hero with <b>{q}</b>
-          </div>
-
+            <div className="alert alert-danger animate__animated animate__fadeIn" 
+                style={{ display: showError ? '' : 'none' }}>
+              No hero with <b>{ q }</b>
+            </div>
           {heroes.map((hero) => (
             <HeroCard key={hero.id} {...hero} />
           ))}
