@@ -5,6 +5,7 @@ import { PrivateRoute } from "../../router/PrivateRoute";
 
 describe("Puebas en el PrivateRoute", () => {
   test("debe mostrar el children si  esta autenticado", () => {
+    // Mock de la función setItem de localStorage
     Storage.prototype.setItem = jest.fn();
 
     const contextValue = {

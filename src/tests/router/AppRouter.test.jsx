@@ -30,12 +30,14 @@ describe("Pruebas en el AppRouter", () => {
     };
 
     render(
-      <MemoryRouter initialEntries={["/logn"]}>
+      <MemoryRouter initialEntries={["/login"]}>
         <AuthContext.Provider value={contextValue}>
           <AppRouter />
         </AuthContext.Provider>
       </MemoryRouter>
     );
+    //la palabra Marvel debe aparecer al menos una vez en el documento HTML
+    //que sea mayor o igual a 1 toBeGreaterThanOrEqual(1)
     expect(screen.getAllByText("Marvel").length).toBeGreaterThanOrEqual(1);
 
     screen.debug();

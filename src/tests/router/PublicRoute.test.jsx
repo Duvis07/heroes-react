@@ -20,6 +20,7 @@ describe("Puebas en el publicRoute", () => {
     expect(screen.getByText("Ruta Publica")).toBeTruthy();
   });
 
+  //EL USUARIO DEBE DE ESTAR AUTENTICADO PARA VER LA RUTA MARVEL
   test("debe de navegar si está autenticado", () => {
     const contextValue = {
       logged: true,
